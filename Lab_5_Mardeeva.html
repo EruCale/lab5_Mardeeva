@@ -1,0 +1,519 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "ba70545c-4350-422c-9436-f6f85cbd3fc2",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "title: 'Лабораторна робота №5. Списки'\n",
+    "description:\n",
+    "   Документ зроблено за допомогою [Quarto](https://quarto.org/)\n",
+    "author: \"&copy; [<span style='color: black;'> Мардєєва Діана </span>]), 2024\"\n",
+    "date: \"01.12.2024\"\n",
+    "lang: ukr\n",
+    "format:\n",
+    "  html:\n",
+    "    code-fold: true\n",
+    "    toc: true # меню\n",
+    "    toc_float: # спливаюче меню  \n",
+    "      collapsed: true # авто\n",
+    "      number_sections: true\n",
+    "jupyter: python3\n",
+    "---"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d56f82c8-6462-4f33-a6c9-2cdbdcd1976f",
+   "metadata": {},
+   "source": [
+    "__Мета:__ _освоїти роботу зі списками_"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "068b0637-e104-454a-b042-db39b4e78325",
+   "metadata": {},
+   "source": [
+    "## Створення та обробка списків"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c61b6910-fc21-4e08-b773-9137d694a5df",
+   "metadata": {},
+   "source": [
+    "### Завдання 1\n",
+    "\n",
+    "Жив-був капелюх. У капелюсі не було кролика, натомість був список із п'яти чисел: `1`, `2`, `3`, `4` та `5`.\n",
+    "\n",
+    "Ваше завдання:\n",
+    "\n",
+    "* напишіть рядок коду, що пропонує користувачеві замінити число всередині списку цілим числом, введеним користувачем (крок 1)\n",
+    "* напишіть рядок коду, який видаляє останній елемент зі списку (крок 2)\n",
+    "* напишіть рядок коду, який друкує довжину існуючого списку (крок 3).  \n",
+    "\n",
+    "Чи готові до цього випробування?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "5688f4f3-366e-4dce-8449-36601f910310",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "hat_list = [1, 2, 3, 4, 5]\n",
+    "user_number = int(input(\"Введіть ціле число для заміни середнього елемента списку в першому завданні: \"))\n",
+    "hat_list[2] = user_number\n",
+    "hat_list.pop()\n",
+    "print(\"Довжина списку:\", len(hat_list))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8a37f0c8-e18c-4c06-80ac-1eac07ed5723",
+   "metadata": {},
+   "source": [
+    "Введіть ціле число для заміни середнього елемента списку в першому завданні: >? 34\n",
+    "Довжина списку: 4"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a32932f4-8500-4d98-8f91-a2621ba4fdc3",
+   "metadata": {},
+   "source": [
+    "### Сортування списків "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4cada176-77f0-48ff-b1af-f6397174b764",
+   "metadata": {},
+   "source": [
+    "Поряд з можливістю реалізувати будь-який алгоритм сортування, у python існують вбудовані методи для сортування списків."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "4d40a720-85d5-404e-8336-f336f27ceab9",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "my_list = [1, 7, 23, 34, 0]\n",
+    "my_list.sort()\n",
+    "print(my_list)\n",
+    "my_list.reverse()\n",
+    "print(my_list)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "798cf344-46ca-4c74-8ec2-7a3cbf2693d1",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "[0, 1, 7, 23, 34]\n",
+    "[34, 23, 7, 1, 0]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "54d9e88a-313c-4923-8c9e-b7028ecc0668",
+   "metadata": {},
+   "source": [
+    "### Завдання 2\n",
+    "\n",
+    "Написати програму сортування списку у порядку зростання методом бульбашки."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "c5b41797-2579-48b4-b932-dbbae75aadeb",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "user_list = input(\"Введіть список чисел, розділених пробілами для другого завдання: \")\n",
+    "numbers = [int(x) for x in user_list.split()]\n",
+    "n = len(numbers)\n",
+    "for i in range(n):\n",
+    "    for j in range(0, n - i - 1):\n",
+    "        if numbers[j] > numbers[j + 1]:\n",
+    "            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\n",
+    "print(\"Відсортований методом бульбашкою список:\", numbers)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "f7c9eeb7-0a57-4aca-8d73-04fa63bac5c1",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Введіть список чисел, розділених пробілами для другого завдання: >? 3 6 8\n",
+    "Відсортований методом бульбашкою список: [3, 6, 8]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c4322688-230a-4930-9452-c952415fc578",
+   "metadata": {},
+   "source": [
+    "### Конструкції `in` та `not in`"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a289f727-ce88-4958-b861-3c0720840c50",
+   "metadata": {},
+   "source": [
+    "### Завдання 3\n",
+    "\n",
+    "Уявіть список - не дуже довгий, не дуже складний, просто звичайний список, що містить деякі цілі числа. Деякі з цих чисел можуть повторюватись, і це ключ до розгадки. Ми не хочемо повторень. Ми хочемо, щоб їх видалили.\n",
+    "\n",
+    "Ваше завдання – написати програму, яка видаляє всі дублікати чисел зі списку. Ціль полягає в тому, щоб скласти список, в якому всі числа зустрічаються не більше одного разу."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5e9c9947-062b-4be1-b648-41e597654a8b",
+   "metadata": {},
+   "source": [
+    "::: callout-note\n",
+    "## Примітка\n",
+    "припустимо, що вихідний список жорстко закодований всередині коду - Вам не потрібно вводити його з клавіатури. Звичайно, Ви можете покращити код і додати частину, яка може вести діалог з користувачем і отримувати від неї всі дані..\n",
+    ":::"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2db67a6f-762d-4734-a28b-7b36e632db7b",
+   "metadata": {},
+   "source": [
+    "::: callout-note\n",
+    "## Підказка\n",
+    "ми рекомендуємо Вам створити новий список як тимчасову робочу область - вам не потрібно оновлювати список in situ.\n",
+    "\n",
+    "Ми не надали тестових даних, оскільки було б надто просто. Натомість ви можете використовувати наш скелет.\n",
+    ":::"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "b6cf32d4-dd79-4f1a-ae97-0ea340dd1efb",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "raw_list = input(\"Введіть список чисел з повторами для третього завдання(розділяються пробілами): \")\n",
+    "numbers = [int(x) for x in raw_list.split()]\n",
+    "unique_numbers = list(set(numbers))\n",
+    "print(\"Список без дублікатів:\", unique_numbers)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "0bace482-1cc7-4fa0-8e83-1e3593481284",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Введіть список чисел з повторами для третього завдання(розділяються пробілами): >? 1 2 4 4 1 4 2 6 2 9\n",
+    "Список без дублікатів: [1, 2, 4, 6, 9]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1a123ebf-dc70-4f5a-8350-1a2f984c6016",
+   "metadata": {},
+   "source": [
+    "## Багатовимірні списки. Генератори списків"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d5484eb7-8eab-47c5-9066-137f253261c7",
+   "metadata": {},
+   "source": [
+    "### Приклад "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b1c90487-ea34-4105-a284-3a81dc4e2df5",
+   "metadata": {},
+   "source": [
+    "Визначимо середньомісячну полуденну температуру. Складіть усі 31 покази, записані опівдні, та поділіть отриману суму на 31. Ви можете припустити, що спочатку зберігається північна температура. Ось відповідний код:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "1c76bbcd-1c26-4369-944f-679a2362ad15",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Взяла код з методички\n",
+    "temps = [[0.0 for h in range(24)] for d in range(31)]\n",
+    "# Калькулятор середньомісячної полуденної температури\n",
+    "total = 0.0\n",
+    "for day in temps:\n",
+    "    total += day[11]\n",
+    "\n",
+    "average = total / 31\n",
+    "\n",
+    "print(\"Average temperature at noon:\", average)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "b72c6ce3-81f3-4a11-ab1d-4cfe2dfb9530",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Average temperature at noon: 0.0"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6c73dc68-032b-4470-af06-515e79d68601",
+   "metadata": {},
+   "source": [
+    "### Завдання 4\n",
+    "Погляньте на шахівницю. Кожне поле містить кілька індексів, які необхідно вказати для доступу до вмісту клітини:  \n",
+    "![image.png](attachment:2d271334-cc44-489c-a2cc-cb043c18f105.png)\n",
+    "Напишіть код, використоувуючи генератори списків, який створює матрицю 8х8 з пустими клітинками (пуста клітинка задається як \"_\") для задання шахівниці і розставте чотири тури по кутках шахівниці"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "9ba51d82-2c17-41a0-8460-049a9c3a9f93",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "chessboard = [[\"_\"] * 8 for _ in range(8)]\n",
+    "chessboard[0][0] = \"R\"\n",
+    "chessboard[0][7] = \"R\"\n",
+    "chessboard[7][0] = \"R\"\n",
+    "chessboard[7][7] = \"R\"\n",
+    "for row in chessboard:\n",
+    "    print(\" \".join(row))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "98763c68-3366-4f42-b90b-51f8b6978057",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "R _ _ _ _ _ _ R\n",
+    "_ _ _ _ _ _ _ _\n",
+    "_ _ _ _ _ _ _ _\n",
+    "_ _ _ _ _ _ _ _\n",
+    "_ _ _ _ _ _ _ _\n",
+    "_ _ _ _ _ _ _ _\n",
+    "_ _ _ _ _ _ _ _\n",
+    "R _ _ _ _ _ _ R"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "95a415a5-0aae-475e-844d-1aef5ad09d11",
+   "metadata": {},
+   "source": [
+    "## Контрольні запитання"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "af58c103-dd99-4ffd-a1fa-cd29e8bcc3fc",
+   "metadata": {},
+   "source": [
+    "1. Який вивод наступного фрагмента?  "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "7c52d1c0-ad22-496a-9a74-04fa6c453c16",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "list_1 = [\"A\", \"B\", \"C\"]\n",
+    "list_2 = list_1\n",
+    "list_3 = list_2\n",
+    "\n",
+    "del list_1 [0]\n",
+    "del list_2 [0]\n",
+    "print(list_3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "a2216355-8d80-4485-8291-05ffb1d95f44",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "['C']"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "76035a6c-752e-4cb1-975a-a99b178484b0",
+   "metadata": {},
+   "source": [
+    "2. Який вивод наступного фрагмента?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "e6314ec4-4bbc-43bf-99a2-c0ab2cfe3b40",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "list_1 = [\"A\", \"B\", \"C\"]\n",
+    "list_2 = list_1\n",
+    "list_3 = list_2\n",
+    "\n",
+    "del list_1 [0]\n",
+    "del list_2 \n",
+    "print(list_3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "09a228f7-4606-4ab7-ba8e-9b0878b08712",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "['B', 'C']"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "17eff73a-a521-432d-9491-a94a54ed16fa",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "3. Який вивод наступного фрагмента?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "a43f41d1-f843-447c-ac7d-3c40a682b34b",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "list_1 = [\"A\", \"B\", \"C\"]\n",
+    "list_2 = list_1\n",
+    "list_3 = list_2\n",
+    "\n",
+    "del list_1 [0]\n",
+    "del list_2 [:]\n",
+    "print(list_3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "1f490b7b-d2f4-4a4c-921f-edfbd28af119",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "[]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "d616835f-c42f-4daa-a2f9-7d24af09a381",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "4. Який вивод наступного фрагмента?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "7c82d55d-e20e-4f1d-bb02-fda2d87ebdd6",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "list_1 = [\"A\", \"B\", \"C\"]\n",
+    "list_2 = list_1 [:]\n",
+    "list_3 = list_2 [:]\n",
+    "\n",
+    "del list_1 [0]\n",
+    "del list_2 [0}\n",
+    "print(list_3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "568f3760-22d8-44bd-ab66-6af0e247b3ba",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "['A', 'B', 'C']"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8ec2b799-9ed2-494f-aace-76332c26f667",
+   "metadata": {},
+   "source": [
+    "## References"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0ab2f4b8-5065-4512-8002-324b8b28df43",
+   "metadata": {},
+   "source": [
+    "1. https://www.geeksforgeeks.org/python-program-for-bubble-sort/\n",
+    "2. https://www.prepbytes.com/blog/python/bubble-sort-program-in-python/\n",
+    "3. https://www.geeksforgeeks.org/python-remove-duplicates-list/\n",
+    "4. https://www.geeksforgeeks.org/python-ways-to-remove-duplicates-from-list/\n",
+    "5. https://stackoverflow.com/questions/60243206/python-loop-for-temperature\n",
+    "6. https://stackoverflow.com/questions/47035020/python-chess-board-easy\n",
+    "7. https://medium.com/@davidlfliang/intro-python-algorithms-eight-queens-problem-fdcc5cf384d5"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.4"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
